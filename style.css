@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    color: white;
+    background: url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1920') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* OVERLAY ESCURO (ESSENCIAL) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    z-index: -1;
+}
+
+/* HEADER */
+.topo {
+    background: #ec7000;
+    display: flex;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;    /*joga os itens para as extremidades */
+    align-items: center;      
+}
+
+.topo img {
+    width: 50px;
+    margin-left: 20px;
+}
+
+/* CONTAINER */
+.container {
+    padding: 30px;
+}
+
+/* CARD PRINCIPAL */
+.painel {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+
+/* INPUT GRANDE */
+.input-box {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* BOTÃO */
+button {
+    background: #ec7000;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d46000;
+}
+
+/* RESULTADO */
+.resultado {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #2a2a2a;
+}
+
+/* STATUS LIBERADO */
+.liberado {
+    border-left: 6px solid #00ff9c;
+}
+
+/* STATUS BLOQUEADO */
+.bloqueado {
+    border-left: 6px solid red;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.box {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* TÍTULO */
+.box small {
+    color: #aaa;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* PLACA GRANDE */
+.placa {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* HISTÓRICO */
+.historico {
+    margin-top: 30px;
+}
+
+.item {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+}

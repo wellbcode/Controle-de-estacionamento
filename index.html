@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="shortcut icon" href="logo-park.PNG" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./logo.jpg">
+    <title>Consulta de placas</title>
+</head>
+<body>
+    <div class="topo">🚗 Controle de Estacionamento</div><!--<img src="logo-branco.jpg" alt="logo branco">--></div>
+
+    <div class="container">
+        <div class="painel">
+            <!-- INPUT -->
+            <div class="input-box">
+                <input id="inputPlaca" placeholder="Digite a placa do veículo ex: WEL1986">
+                <button onclick="consultar()">Consultar</button>
+            </div>
+   
+            <div id="loading"></div>
+            <br>
+            <!-- RESULTADO -->
+            <div id="resultado"></div>
+
+            <!-- HISTÓRICO -->
+            <div class="historico">
+                <h3>Últimas consultas:</h3>
+                <div id="historico"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
