@@ -4,7 +4,7 @@ body {
     color: white;
     background: url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1920') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* OVERLAY ESCURO (ESSENCIAL) */
@@ -132,4 +132,51 @@ button:hover {
 .item {
     border-bottom: 1px solid #444;
     padding: 8px 0;
+}
+
+/* RESPONSIVIDADE BASE */
+img, input, button {
+    max-width: 100%;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .painel {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .input-box {
+        flex-direction: column;
+    }
+
+    input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+       .grid {
+        grid-template-columns: 1fr;
+    }
+     .placa {
+        font-size: 22px;
+        text-align: center;
+    }
+     .historico {
+        font-size: 14px;
+    }
+
+    .item {
+        font-size: 13px;
+    }
 }
