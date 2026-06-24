@@ -1,4 +1,4 @@
-# 🚗 Sistema de Consulta de Veículos / Crachás
+# 🚗 Sistema de Consulta de Veículos
 
 Sistema web para consulta rápida de veículos ou crachás com base em intervalos pré-definidos, exibindo informações detalhadas, histórico de buscas e interface com loading dinâmico (skeleton screen).
 
