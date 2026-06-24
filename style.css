@@ -119,10 +119,31 @@ button:hover {
     gap: 15px;
 }
 
-.box {
-    background: #333;
+/*.box {
+    background: linear-gradient(145deg, #3a3a3a, #2f2f2f);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: 0.2s;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+
+.box small {
+    display: block;
+    color: #aaa;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+*/
+
+.box {
+    /* background: #333;
+    padding: 15px;
+    border-radius: 8px; */
+    background: linear-gradient(145deg, #3a3a3a, #2f2f2f);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: 0.2s;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 /* TÍTULO */
@@ -130,6 +151,7 @@ button:hover {
     color: #aaa;
     display: block;
     margin-bottom: 5px;
+    font-size: 12px;
 }
 
 /* PLACA GRANDE */
@@ -159,39 +181,163 @@ img, input, button {
     padding: 20px;
 }
 
+/*Animação loading*/
+.loading-box {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+
+    /*    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;*/
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 4px solid #444;
+    border-top: 4px solid #ec7000;
+    border-radius: 50%;
+    animation: girar 3s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    width: 50%;
+    height: 4px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #3b82f6;
+    animation: carregando 1s linear forwards;
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 25%,
+        #3a3a3a 50%,
+        #2a2a2a 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-box {
+    height: 50px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes carregando {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
 @media (max-width: 768px) {
+    /* CONTAINER */
+    .container {
+        padding: 15px;
+    }
     .painel {
-        padding: 20px;
         margin: 10px;
         border-radius: 10px;
+        padding: 20px;
     }
-
+    /* INPUT + BOTÃO em coluna */
     .input-box {
         flex-direction: column;
     }
-
     input {
-        font-size: 16px;
-        padding: 12px;
+        width: 100%;
+        font-size: 18px;
+        box-sizing: border-box;
     }
-
     button {
         width: 100%;
-        padding: 12px;
-        font-size: 16px;
+        /*padding: 12px;
+        font-size: 16px;*/
     }
-       .grid {
-        grid-template-columns: 1fr;
-    }
-     .placa {
+    
+    /* RESULTADO */
+    .placa {
         font-size: 22px;
         text-align: center;
     }
-     .historico {
+
+    /* GRID vira 1 coluna */
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* BOX mais confortável */
+    .box {
+        padding: 12px;
+    }
+
+    /* LOADING centralizado */
+    .loading-box {
+        align-items: center;
+        text-align: center;
+    }
+    .progress-bar {
+        width: 100%;
+    }
+       .historico {
         font-size: 14px;
     }
 
     .item {
         font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .topo {
+        font-size: 16px;
+        padding: 10px;
+    }
+    input {
+        font-size: 16px;
+        padding: 12px;
+    }
+    button {
+        font-size: 16px;
+        padding: 12px;
+    }
+    .input-box {
+
+        width: 100%;
+
+    }
+    input, button {
+        transition: all 0.2s ease;
+    }
+    .placa {
+        font-size: 20px;
     }
 }
