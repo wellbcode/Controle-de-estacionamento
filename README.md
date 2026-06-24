@@ -4,6 +4,17 @@ Sistema web para consulta rápida de veículos ou crachás com base em intervalo
 
 ---
 
+## 🖥️ Interface
+
+O layout foi desenvolvido com foco em:
+
+Usabilidade simples
+Visual moderno com tema escuro
+Destaque de status (Liberado / Bloqueado)
+Experiência fluida com animações de loading
+
+ ---
+
 ## 📌 Demonstração
 
 O sistema permite:
@@ -53,32 +64,20 @@ Adaptado para celulares, tablets e desktop.
 ├── script.js
 └── service-worker.js
 └── style.css
+---
+
+## 🚀 Como executar
+Clone o repositório:
+git clone https://github.com/wellbcode/Controle-de-estacionamento.git
 
 ---
 
-## 🚀 Como executar o projeto
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/wellbcode/Controle-de-estacionamento.git
-Acesse a pasta:
-cd seu-repo
-Abra o arquivo index.html no navegador
-
-ou use a extensão Live Server no VS Code.
-
-💡 Melhorias futuras
- Persistência do histórico (localStorage)
- Filtro de busca avançado
- Backend com API real
- Integração com banco de dados
- Versão desktop com Electron
- Exportação de histórico
-👨‍💻 Autor
+## 👨‍💻 Autor
 
 Desenvolvido por Wellington Bertoso Santos
 
-📄 Licença
+---
 
-Este projeto está sob uso educacional e pode ser adaptado livremente.
+## 📄 Licença
+
+Projeto de uso educacional e livre para estudos e melhorias.
