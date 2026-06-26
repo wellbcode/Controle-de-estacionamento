@@ -385,14 +385,14 @@ img, input, button {
     }
 }
 
-/* @media (max-width: 400px) {
+ @media (max-width: 400px) {
     .topo {
         font-size: 16px;
         padding: 10px;
     }
     input {
-        font-size: 16px;
-        padding: 12px;
+        font-size: 12px;
+        padding: 10px;
     }
     button {
         font-size: 16px;
@@ -407,4 +407,4 @@ img, input, button {
     .placa {
         font-size: 20px;
     }
-} */
+} 
