@@ -136,11 +136,10 @@ button:hover {
 */
 
 .box {
-    /* background: #333;
-    padding: 15px;
-    border-radius: 8px; */
+    border-left: 2px solid#d46000;
     background: linear-gradient(145deg, #3a3a3a, #2f2f2f);
     box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    filter: drop-shadow(2px 1px 5px #d46000) ;
     transition: 0.2s;
     padding: 15px;
     border-radius: 10px;
@@ -155,15 +154,85 @@ button:hover {
 }
 
 /* PLACA GRANDE */
-.placa {
+/* .placa {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 15px;
+} */
+
+.placa1{
+    width:200px;
+    height:80px;
+    background:#fff;
+    border:2px solid #fff;
+    border-radius:10px;
+    overflow:hidden;
+    margin:0 auto 20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+.placa{
+    width:200px;
+    height:75px;
+    background:#fff;
+    border:3px solid #333;
+    border-radius:10px;
+    overflow:hidden;
+    margin:0 auto 20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+
+.placa-topo{
+    background:#0039A6;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    letter-spacing:-1px;
+    font-size:14px;
+}
+
+.placa-numero{
+    height:calc(100% - 24px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:900;
+    color:#111;
+    letter-spacing:4px;
+    font-family:"Arial Black", Arial, sans-serif;
 }
 
 /* HISTÓRICO */
 .historico {
     margin-top: 30px;
+}
+
+.historico-topo {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+#toggleHistorico {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.historico-conteudo {
+    max-height: 250px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* estado recolhido */
+.historico-conteudo.recolhido {
+    max-height: 0;
+    opacity: 0;
 }
 
 .item {
@@ -330,9 +399,7 @@ img, input, button {
         padding: 12px;
     }
     .input-box {
-
         width: 100%;
-
     }
     input, button {
         transition: all 0.2s ease;

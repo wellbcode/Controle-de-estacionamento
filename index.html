@@ -18,6 +18,8 @@
             <div class="input-box">
                 <input id="inputPlaca" placeholder="Digite a placa do veículo ex: WEL1986">
                 <button onclick="consultar()">Consultar</button>
+                <!-- BOTÃO LIMPAR -->
+                <button id="btn-Limpar" onclick="limpar()">Limpar</button>
             </div>
    
             <div id="loading"></div>
@@ -25,13 +27,23 @@
             <!-- RESULTADO -->
             <div id="resultado"></div>
 
-            <!-- HISTÓRICO -->
+            <!-- HISTÓRICO 
             <div class="historico">
                 <h3>Últimas consultas:</h3>
                 <div id="historico"></div>
+            </div>-->
+
+               <!-- HISTÓRICO -->
+            <div class="historico">
+                <div class="historico-topo">
+                    <h3>Últimas consultas:</h3>
+                    <button id="toggleHistorico">🔽</button>
+                </div>
+                <div id="historico" class="historico-conteudo"></div>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/3220c0aca7.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-// BASE
-
 // const base = [
 //     {placa: "ABC1234", nome: "Wellington Bertoso Santos", cargo: "Gerente",veiculo: "Cadillac Escalade - Preto", polo: "CEIC",
 //         torre: "Eudoro - Piso -1",
@@ -26,6 +24,7 @@
 //         status: "Reserva Bookker"
 //     }
 // ];
+
 
 const base = [
     ["ABC1234", "Wellington Bertoso Santos - (11) 912345678", "Gerente - WBS Solutions", "Cadillac Escalade - Preto", "Knoxville (USA)", "Esmerald City - Piso -1", "Vaga fixa"],
@@ -90,7 +89,12 @@ const base = [
             if(dado){
                 resultado.innerHTML = `
                     <div class="resultado ${dado.status === 'Liberado' ? 'liberado' : 'bloqueado'}">
-                        <div class="placa">${dado.placa}</div>
+                        <div class="placa1">
+                            <div class="placa">
+                                <div class="placa-topo">BRASIL</div>
+                                <div class="placa-numero">${dado.placa}</div>
+                            </div>
+                        </div>
                         <div class="grid">
                             <div class="box">
                                 <small>Nome/Contato:</small>
@@ -147,6 +151,27 @@ const base = [
             `;
         });
     }
+
+        /*Botão limpar imputs*/
+    document.getElementById("btn-Limpar").addEventListener("click", limpar);
+
+    function limpar() {
+        document.getElementById("inputPlaca").value = "";
+        document.getElementById("resultado").innerHTML = "";
+        document.getElementById("loading").innerHTML = "";
+        document.getElementById("inputPlaca").focus();
+    }
+
+/*Botão limpar recolher e espandir*/    
+const btnToggle = document.getElementById("toggleHistorico");
+const historicoBox = document.getElementById("historico");
+
+btnToggle.addEventListener("click", () => {
+    historicoBox.classList.toggle("recolhido");
+    btnToggle.textContent = historicoBox.classList.contains("recolhido")
+        ? "🔼"
+        : "🔽";
+});
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./service-worker.js")

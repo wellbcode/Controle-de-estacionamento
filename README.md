@@ -67,8 +67,9 @@ Adaptado para celulares, tablets e desktop.
 ---
 
 ## 🚀 Como executar
-Clone o repositório:
-git clone https://github.com/wellbcode/Controle-de-estacionamento.git
+
+🔗 Acesse o site: ([https://wellbcode.github.io/Controle-de-estacionamento/])
+Clone o repositório: ([https://github.com/wellbcode/Controle-de-estacionamento.git])
 
 ---
 
