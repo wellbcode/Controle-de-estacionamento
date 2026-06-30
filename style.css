@@ -73,7 +73,7 @@ body::before {
 
 input {
     flex: 1;
-    padding: 15px;
+    padding: 16px;
     font-size: 20px;
     border-radius: 8px;
     border: none;
