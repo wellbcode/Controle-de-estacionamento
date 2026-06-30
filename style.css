@@ -119,22 +119,6 @@ button:hover {
     gap: 15px;
 }
 
-/*.box {
-    background: linear-gradient(145deg, #3a3a3a, #2f2f2f);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    transition: 0.2s;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.box small {
-    display: block;
-    color: #aaa;
-    margin-bottom: 5px;
-    font-size: 12px;
-}
-*/
-
 .box {
     border-left: 2px solid#d46000;
     background: linear-gradient(145deg, #3a3a3a, #2f2f2f);
@@ -153,13 +137,13 @@ button:hover {
     font-size: 12px;
 }
 
-/* PLACA GRANDE */
 /* .placa {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 15px;
 } */
 
+/* PLACA GRANDE */
 .placa1{
     width:200px;
     height:80px;
@@ -212,7 +196,6 @@ button:hover {
 .historico-topo {
     display: flex;
     justify-content: space-between;
-
     align-items: center;
 }
 
@@ -258,12 +241,6 @@ img, input, button {
     align-items: center;
     justify-content: center;
     padding: 15px 0;
-
-    /*    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;*/
 }
 
 .spinner {
@@ -377,7 +354,7 @@ img, input, button {
         width: 100%;
     }
        .historico {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .item {
@@ -391,12 +368,12 @@ img, input, button {
         padding: 10px;
     }
     input {
-        font-size: 12px;
-        padding: 10px;
+        font-size: 16px;
+        padding: 16px;
     }
     button {
         font-size: 16px;
-        padding: 12px;
+        padding: 16px;
     }
     .input-box {
         width: 100%;

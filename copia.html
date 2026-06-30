@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Sistema para identificar o proprietário do veículo através da placa">
+
+<meta name="author" content="Wellington Bertoso Santos" data="08/06/2026">
+
+<meta name="keywords" content="Crahás, html, CSS JavaScript">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="shortcut icon" href="logo-itau.png" type="image/x-icon">
+
+<link rel="stylesheet" href="style.css">
+
+<title>Controle de Estacionamento</title>
+
+</head>
+<style>
+    body {
+
+    margin: 0;
+
+    font-family: Arial;
+
+    color: white;
+
+    background: url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1920') no-repeat center center fixed;
+
+    background-size: cover;
+
+}
+
+ 
+
+/* OVERLAY ESCURO (ESSENCIAL) */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0,0,0,0.75);
+
+    z-index: -1;
+
+}
+
+ 
+
+/* HEADER */
+
+.topo {
+
+    background: #ec7000;
+
+    padding: 15px 20px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+ 
+
+.topo img{
+
+    width: 50px;
+
+}
+
+/* CONTAINER */
+
+.container {
+
+    padding: 30px;
+
+}
+
+ 
+
+/* CARD PRINCIPAL */
+
+.painel {
+
+    background: #1e1e1e;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+
+}
+
+ 
+
+/* INPUT GRANDE */
+
+.input-box {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+ 
+
+input {
+
+    flex: 1;
+
+    padding: 15px;
+
+    font-size: 20px;
+
+    border-radius: 8px;
+
+    border: none;
+
+}
+
+ 
+
+/* BOTÃO */
+
+button {
+
+    background: #ec7000;
+
+    border: none;
+
+    color: white;
+
+    font-size: 18px;
+
+    padding: 15px 30px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+ 
+
+button:hover {
+
+    background: #d46000;
+
+}
+
+ 
+
+/* RESULTADO */
+
+.resultado {
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    background: #2a2a2a;
+
+}
+
+ 
+
+/* STATUS LIBERADO */
+
+.liberado {
+
+    border-left: 6px solid #00ff9c;
+
+}
+
+ 
+
+/* STATUS BLOQUEADO */
+
+.bloqueado {
+
+    border-left: 6px solid red;
+
+}
+
+ 
+
+/* GRID */
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+ 
+
+/* .box {
+
+    border-left: 2px solid#d46000;
+
+    background: #333;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+} */
+
+ 
+
+.box {
+
+    border-left: 2px solid#d46000;
+
+    background: linear-gradient(145deg, #3a3a3a, #2f2f2f);
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+
+    filter: drop-shadow(2px 1px 5px #d46000) ;
+
+    transition: 0.2s;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+}
+
+ 
+
+/* TÍTULO */
+
+.box small {
+
+    color: #aaa;
+
+    display: block;
+
+    margin-bottom: 5px;
+
+}
+
+ 
+
+/* PLACA GRANDE */
+
+.placa {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+}
+
+ 
+
+/* HISTÓRICO */
+
+.historico {
+
+    margin-top: 30px;
+
+}
+
+ 
+
+.item {
+
+    border-bottom: 1px solid #444;
+
+    padding: 8px 0;
+
+}
+
+ 
+
+.loading-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 15px 0;
+
+}
+
+ 
+
+.spinner {
+
+    width: 30px;
+
+    height: 30px;
+
+    border: 4px solid #444;
+
+    border-top: 4px solid #ec7000;
+
+    border-radius: 50%;
+
+    animation: girar 1s linear infinite;
+
+    margin-bottom: 10px;
+
+}
+
+ 
+
+.historico-topo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+ 
+
+#toggleHistorico {
+
+    background: transparent;
+
+    border: none;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+ 
+
+.historico-conteudo {
+
+    max-height: 250px;
+
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+
+}
+
+ 
+
+/* estado recolhido */
+
+.historico-conteudo.recolhido {
+
+    max-height: 0;
+
+    opacity: 0;
+
+}
+
+ 
+
+@keyframes girar {
+
+    to { transform: rotate(360deg); }
+
+}
+
+ 
+
+.loading-text {
+
+    font-size: 14px;
+
+    color: #aaa;
+
+    margin-bottom: 8px;
+
+}
+
+ 
+
+.progress-bar {
+
+    width: 200px;
+
+    height: 4px;
+
+    background: #333;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+ 
+
+.progress {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #3b82f6;
+
+    animation: carregando 1s linear forwards;
+
+}
+
+ 
+
+@keyframes carregando {
+
+    from { width: 0%; }
+
+    to { width: 100%; }
+
+}
+
+ 
+
+@media (max-width: 768px) {
+
+ 
+
+    /* CONTAINER */
+
+    .container {
+
+        padding: 15px;
+
+    }
+
+ 
+
+    .painel {
+
+        padding: 20px;
+
+    }
+
+ 
+
+    /* INPUT + BOTÃO em coluna */
+
+    .input-box {
+
+        flex-direction: column;
+
+    }
+
+ 
+
+    input {
+
+        width: 100%;
+
+        font-size: 18px;
+
+        box-sizing: border-box;
+
+    }
+
+ 
+
+    button {
+
+        width: 100%;
+
+    }
+
+ 
+
+    /* RESULTADO */
+
+    .placa {
+
+        font-size: 22px;
+
+        text-align: center;
+
+    }
+
+ 
+
+    /* GRID vira 1 coluna */
+
+    .grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+ 
+
+    /* BOX mais confortável */
+
+    .box {
+
+        padding: 12px;
+
+    }
+
+ 
+
+    /* LOADING centralizado */
+
+    .loading-box {
+
+        align-items: center;
+
+        text-align: center;
+
+    }
+
+    .progress-bar {
+
+        width: 100%;
+
+    }
+
+}
+
+ 
+
+@media (max-width: 400px) {
+
+ 
+
+    .topo {
+
+        font-size: 16px;
+
+        padding: 10px;
+
+    }
+
+ 
+
+    input {
+
+        font-size: 16px;
+
+        padding: 12px;
+
+    }
+
+ 
+
+    button {
+
+        font-size: 16px;
+
+        padding: 12px;
+
+    }
+
+ 
+
+    .input-box {
+
+        width: 100%;
+
+    }
+
+ 
+
+    input, button {
+
+        transition: all 0.2s ease;
+
+    }
+
+ 
+
+    .placa {
+
+        font-size: 20px;
+
+    }
+
+}
+
+ 
+</style>
+<body>
+
+    <div class="topo">🚗 Controle de Estacionamento - Itaú</div>
+
+ 
+
+    <div class="container">
+
+        <div class="painel">
+
+ 
+
+            <!-- INPUT -->
+
+            <div class="input-box">
+
+                <input id="inputPlaca" placeholder="Digite a placa do veículo, ex: BCW2026">
+
+                <button onclick="consultar()">Consultar</button>
+
+               
+
+            <!-- BOTÃO LIMPAR -->
+
+                <button id="btn-Limpar" onclick="limpar()">Limpar</button>
+
+ 
+
+            </div>
+
+    <br>
+
+            <div id="loading"></div>
+
+ 
+
+            <!-- RESULTADO -->
+
+            <div id="resultado"></div>
+
+ 
+
+            <!-- HISTÓRICO -->
+
+            <div class="historico">
+
+                <div class="historico-topo">
+
+                    <h3>Últimas consultas:</h3>
+
+                    <button id="toggleHistorico">🔽</button>
+
+                </div>
+
+ 
+
+                <div id="historico" class="historico-conteudo"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+   <script>
+    const base = [
+        ["ABC1234", "Wellington Bertoso Santos - (11) 912345678", "Gerente - WBS Solutions", "Cadillac Escalade - Preto", "Knoxville (USA)", "Esmerald City - Piso -1", "Vaga fixa"],
+        ["XYZ9876", "Ana Patrícia - (11) 912345679", "Coordenadora - Conceito Modas", "Jeep Compass - Branco", "Contagem (MG)", "Alabama - Piso 2", "Vaga rotativa"],
+        ["BRA2024", "Roberto Andrade - (11) 912345680", "Vendedor - Lojas Mel", "BMW X5 - Preto", "São Paulo (SP)", "Mágico de Oz - Piso Verde", "Vaga avulso"],
+        ["BRA1406", "Mayara Silva - (11) 912345681", "Microsoft - Eng de Software", "BMW X5 - Preto", "Tenessee (USA)", "Estrada de tijolos amarelos - Piso Amarelo", "Vaga visitante"],
+].map(([placa, nome, cargo, veiculo, polo, torre, status]) => ({
+    placa,
+    nome,
+    cargo,
+    veiculo,
+    polo,
+    torre,
+    status
+}));
+
+//histórico
+
+    let historico = [];
+
+    // ENTER
+
+    document.getElementById("inputPlaca")
+
+    .addEventListener("keydown", e => {
+
+        if(e.key === "Enter") consultar();
+
+    });
+
+ 
+
+    function mostrarLoading() {
+
+        return `
+
+            <div class="loading-box">
+
+                <div class="spinner"></div>
+
+                <div class="loading-text">Consultando veículo...</div>
+
+ 
+
+                <div class="progress-bar">
+
+                    <div class="progress"></div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+ 
+
+   
+
+function consultar(){
+
+    const placa = document.getElementById("inputPlaca").value.trim().toUpperCase();
+
+ 
+
+    if(!placa) return;
+
+ 
+
+    const loading = document.getElementById("loading");
+
+    const resultado = document.getElementById("resultado");
+
+ 
+
+    loading.innerHTML = mostrarLoading();
+
+    resultado.innerHTML = "";
+
+ 
+
+    setTimeout(() => {
+
+ 
+
+        const dado = base.find(v => v.placa === placa);
+
+ 
+
+       
+
+        // ✅ SALVA SEMPRE
+
+        historico.unshift({
+
+            placa: placa,
+
+            data: new Date().toLocaleString(),
+
+            status: dado ? "✅" : "❌"
+
+        });
+
+ 
+
+            renderHistorico();
+
+ 
+
+        if(dado){
+
+            resultado.innerHTML = `
+
+                <div class="resultado ${dado.status === 'Liberado' ? 'liberado' : 'bloqueado'}">
+
+                   
+
+                    <div class="placa">${dado.placa}</div>
+
+ 
+
+                    <div class="grid">
+
+                        <div class="box">
+
+                            <small>Nome</small>
+
+                            ${dado.nome}
+
+                        </div>
+
+ 
+
+                        <div class="box">
+
+                            <small>Cargo/Empresa</small>
+
+                            ${dado.cargo}
+
+                        </div>
+
+ 
+
+                        <div class="box">
+
+                            <small>Veículo</small>
+
+                            ${dado.veiculo}
+
+                        </div>
+
+ 
+
+                        <div class="box">
+
+                            <small>Polo</small>
+
+                            ${dado.polo}
+
+                        </div>
+
+ 
+
+                        <div class="box">
+
+                            <small>Torre/Piso</small>
+
+                            ${dado.torre}
+
+                        </div>
+
+ 
+
+                        <div class="box">
+
+                            <small>Status</small>
+
+                            ${dado.status}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        } else {
+
+            resultado.innerHTML = `<div style="color:red;">❌ Veículo não encontrado</div>`;
+
+        }
+
+ 
+
+        loading.innerHTML = ""; // ✅ remove corretamente
+
+ 
+
+    }, 400);
+
+}
+
+ 
+
+    function renderHistorico(){
+
+        const div = document.getElementById("historico");
+
+ 
+
+        div.innerHTML = "";
+
+ 
+
+        historico.slice(0, 10).forEach(item => {
+
+            div.innerHTML += `
+
+                <div class="item">
+
+                    ${item.placa} - ${item.data}
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+ 
+
+    /*Botão limpar imputs*/
+
+    document.getElementById("btn-Limpar").addEventListener("click", limpar);
+
+    function limpar() {
+
+        document.getElementById("inputPlaca").value = "";
+
+        document.getElementById("resultado").innerHTML = "";
+
+        document.getElementById("loading").innerHTML = "";
+
+       
+
+        document.getElementById("inputPlaca").focus();
+
+    }
+
+ 
+
+/*Botão limpar recolher e espandir*/    
+
+const btnToggle = document.getElementById("toggleHistorico");
+
+const historicoBox = document.getElementById("historico");
+
+ 
+
+btnToggle.addEventListener("click", () => {
+
+    historicoBox.classList.toggle("recolhido");
+
+ 
+
+    btnToggle.textContent = historicoBox.classList.contains("recolhido")
+
+        ? "🔼"
+
+        : "🔽";
+
+});
+   </script>
+
+    <!-- <script src="script.js"></script> -->
+
+</body>
+
+</html>

@@ -43,6 +43,18 @@
             </div>
         </div>
     </div>
+
+      <!-- Script de rodar offline -->
+    <script>
+        if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('assets/js/service-worker.js')
+            .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
+            .catch(err => console.error('❌ Erro ao registrar Service Worker:', err));
+        });
+        }
+    </script>
+
     <script src="script.js"></script>
     <script src="service-worker.js"></script>
 </body>
